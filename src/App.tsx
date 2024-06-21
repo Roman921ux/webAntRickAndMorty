@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import styled from 'styled-components'
+//
+import Layout from './Layout';
+import LocationsPage from './pages/LocationsPage'
+import EpisodesPage from './pages/EpisodesPage';
+import CharactersPage from './pages/CharactersPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<LocationsPage />} />
+          <Route path='/episodes' element={<EpisodesPage />} />
+          <Route path='/characters' element={<CharactersPage />} />
+        </Route>
+      </Routes>
+    </Container>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+`
