@@ -17,4 +17,5 @@ export default Main;
 
 const Container = styled.div`
   padding: 15px;
+  margin-top: 15px;
 `;
