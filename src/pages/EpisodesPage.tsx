@@ -28,6 +28,8 @@ function EpisodesPage() {
       }
     }
     fetchEpisodes()
+      .then(() => console.log('Запрос успешно выполнен!'))
+      .catch(error => console.error('Ошибка при запросе', error))
   }, []);
 
   if (isLoading) {
