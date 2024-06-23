@@ -4,23 +4,35 @@ import { Character, CountInfo } from '../types';
 import CharacterItem from '../components/Characters/CharacterItem';
 
 function CharactersPage() {
-  // https://rickandmortyapi.com/api/character
-  const [characters, setCharacters] = useState<Character[] | []>([])
+  const [characters, setCharacters] = useState<Character[] | []>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
       .then(response => {
         if (!response.ok) {
+          setIsError(true)
           return new Error('Произошла ошибка')
         }
         return response.json()
       })
       .then(data => {
-        console.log('Результат запроса:', data);
-        setCharacters(data.results)
+        // console.log('Результат запроса:', data);
+        setIsLoading(false);
+        setCharacters(data.results);
       })
-      .catch(error => console.error('При загрузке данных произошла ошибка', error))
-  }, [])
+      .catch(error => {
+        console.error('При загрузке данных произошла ошибка', error);
+      })
+  }, []);
+
+  if (isLoading) {
+    return <h1>Загрузка...</h1>
+  }
+  if (isError) {
+    return <h1>Ошибка</h1>
+  }
 
   return (
     <Container>
@@ -40,7 +52,7 @@ const Container = styled.div`
   gap: 15px;
 `;
 
-const Block = styled.div`
+export const Block = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 90%;
