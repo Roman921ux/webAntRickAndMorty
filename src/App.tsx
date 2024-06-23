@@ -5,6 +5,7 @@ import Layout from './Layout';
 import LocationsPage from './pages/LocationsPage'
 import EpisodesPage from './pages/EpisodesPage';
 import CharactersPage from './pages/CharactersPage';
+import ExtraRequestPage from './pages/ExtraRequestPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<LocationsPage />} />
           <Route path='/episodes' element={<EpisodesPage />} />
           <Route path='/characters' element={<CharactersPage />} />
+          <Route path='/extra' element={<ExtraRequestPage />} />
         </Route>
       </Routes>
     </Container>

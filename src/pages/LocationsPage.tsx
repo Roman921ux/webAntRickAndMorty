@@ -35,7 +35,7 @@ function LocationsPage() {
   return (
     <Container>
       <Block>
-        {locations.map(location => <LocationItem location={location} />)}
+        {locations.map(location => <LocationItem key={location.id} location={location} />)}
       </Block>
     </Container>
   );
