@@ -1,31 +1,28 @@
 import styled from 'styled-components';
-import { Character } from '../../types';
+import { Episode } from '../../types';
+import { TitleProps } from '../Characters/CharacterItem';
 
 interface Props {
-  character: Character
+  episode: Episode
 }
 
-export interface TitleProps {
-  fontWeight?: string;
-}
-
-function CharacterItem({ character }: Props) {
+function EpisodesItem({ episode }: Props) {
   return (
     <Container>
-      <IMG src={character.image} />
+      {/* <IMG src={character.image} /> */}
       <TextBlock>
         <Block style={{ marginBottom: '15px' }}>
-          <Title fontWeight="--middle-w">{character.name}</Title>
-          <Title fontWeight="small-w">{character.gender}</Title>
+          {/* <Title fontWeight="--middle-w">{character.name}</Title> */}
+          <Title fontWeight="small-w">{episode.air_date}</Title>
         </Block>
-        <Title>{character.location.name}</Title>
-        <Title>{character.status}</Title>
+        <Title>Episode: {episode.episode}</Title>
+        <Title>{episode.name}</Title>
       </TextBlock>
     </Container>
   );
 }
 
-export default CharacterItem;
+export default EpisodesItem;
 
 const Container = styled.div`
   border: 1px solid rgba(1,1,1, 0.15);
