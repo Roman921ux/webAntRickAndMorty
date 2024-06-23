@@ -4,7 +4,6 @@ import { Episode } from '../types';
 import EpisodesItem from '../components/Episodes/EpisodesItem';
 import { Block } from './CharactersPage';
 
-// "locations": "https://rickandmortyapi.com/api/location",
 
 function EpisodesPage() {
   const [episodes, setEpisodes] = useState<Episode[] | []>([]);

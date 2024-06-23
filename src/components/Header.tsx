@@ -7,6 +7,7 @@ function Header() {
       <NavLink to={'/'} style={{ color: 'inherit', textDecoration: 'none' }}>Locations</NavLink>
       <NavLink to={'/episodes'} style={{ color: 'inherit', textDecoration: 'none' }}>Episodes</NavLink>
       <NavLink to={'/characters'} style={{ color: 'inherit', textDecoration: 'none' }}>Characters</NavLink>
+      <NavLink to={'/extra'} style={{ color: 'inherit', textDecoration: 'none' }}>Extra request</NavLink>
     </Container>
   );
 }
