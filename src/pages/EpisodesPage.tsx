@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { Episode } from '../types';
 import EpisodesItem from '../components/Episodes/EpisodesItem';
 import { Block } from './CharactersPage';
+import { useAtom } from 'jotai';
+import { episodesAtom, isErrorAtom, isLoadingAtom } from '../atoms/useAtom';
 
 
 function EpisodesPage() {
-  const [episodes, setEpisodes] = useState<Episode[] | []>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [episodes, setEpisodes] = useAtom(episodesAtom);
+  const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
+  const [isError, setIsError] = useAtom(isErrorAtom);
 
   useEffect(() => {
     async function fetchEpisodes() {
@@ -29,6 +31,10 @@ function EpisodesPage() {
     fetchEpisodes()
       .then(() => console.log('Запрос успешно выполнен!'))
       .catch(error => console.error('Ошибка при запросе', error))
+
+    return () => {
+      setIsLoading(true);
+    }
   }, []);
 
   if (isLoading) {

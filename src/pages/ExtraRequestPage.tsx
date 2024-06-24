@@ -6,6 +6,7 @@ import { Location } from '../types';
 function ExtraRequestPage() {
 
   // здесь прописаны 4 запроса, 3 из которых возвращают 404 ошибку, так как обращение идет на стройний api
+
   // useEffect(() => {
   //   api.get('location/2')
   //     .then(res => console.log(res.data))

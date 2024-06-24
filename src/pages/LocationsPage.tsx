@@ -8,9 +8,7 @@ import { Block } from './CharactersPage';
 import { isErrorAtom, isLoadingAtom, locationsAtom } from '../atoms/useAtom';
 
 function LocationsPage() {
-  // const [locations, setLocations] = useAtom(locationsAtom);
-  const locations = useAtomValue(locationsAtom);
-  const setLocations = useSetAtom(locationsAtom)
+  const [locations, setLocations] = useAtom(locationsAtom);
   const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
   const [isError, setIsError] = useAtom(isErrorAtom);
 
@@ -26,6 +24,9 @@ function LocationsPage() {
         setIsError(true);
         setIsLoading(false);
       })
+    return () => {
+      setIsLoading(true);
+    }
   }, []);
 
   if (isLoading) {

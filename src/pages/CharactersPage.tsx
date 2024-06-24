@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Character, CountInfo } from '../types';
 import CharacterItem from '../components/Characters/CharacterItem';
+import { useAtom } from 'jotai';
+import { charactersAtom, isErrorAtom, isLoadingAtom } from '../atoms/useAtom';
 
 function CharactersPage() {
-  const [characters, setCharacters] = useState<Character[] | []>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [characters, setCharacters] = useAtom(charactersAtom);
+  const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
+  const [isError, setIsError] = useAtom(isErrorAtom);
 
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
@@ -25,6 +27,9 @@ function CharactersPage() {
       .catch(error => {
         console.error('При загрузке данных произошла ошибка', error);
       })
+    return () => {
+      setIsLoading(true);
+    }
   }, []);
 
   if (isLoading) {
